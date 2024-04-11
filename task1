@@ -1,0 +1,25 @@
+from os import path
+BASE_DIR = path.dirname(path.abspath(__file__))
+OUTPUT_FILE = path.join(BASE_DIR, 'output_file.txt')
+
+def get_summary_rss(ps_output_file_path: str) -> str:
+    with open(ps_output_file_path, 'r') as file:
+        lines = file.readlines()[1:]
+    sum_memory = 0
+    for line in lines:
+        columns = line.split()
+        sum_memory += int(columns[5])
+    thousand = 1024
+    lab = 0
+    labs = {0: 'килобайт', 
+            1: 'мегабайт', 
+            2: 'гигабайт', 
+            3: 'терабайт'}
+    while sum_memory > thousand:
+        sum_memory /= thousand
+        lab += 1
+    return f'Объем памяти {round(sum_memory, 3)} {labs[lab]}'
+if __name__ == '__main__':
+    path: str = OUTPUT_FILE
+    sum_rss: str = get_summary_rss(path)
+print(sum_rss)
