@@ -1,0 +1,24 @@
+import datetime
+from flask import Flask
+
+vlad = "Влад"
+
+@app.route('/hello-world')
+def hello_world():
+    global vlad
+    days = ('понедельника',
+            'вторника',
+            'среды',
+            'четверга',
+            'пятницы',
+            'субботы',
+            'воскресенья')
+    day = datetime.datetime.today().weekday()
+    if day == 2 or day == 4 or day == 5:
+        end = 'й'
+    elif day == 0 or day == 1 or day == 3 or day == 6 or day == 7:
+        end = 'го'
+    return  f'Привет, {vlad}, хороше{end} {days[day]} !'
+
+if __name__=="__main__":
+    app.run(debug=True, port=7000)
