@@ -1,3 +1,4 @@
+#	Получение общего количества используемой памяти из 6 столбца 
 from os import path
 BASE_DIR = path.dirname(path.abspath(__file__))
 OUTPUT_FILE = path.join(BASE_DIR, 'output_file.txt')
