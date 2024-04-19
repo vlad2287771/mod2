@@ -1,3 +1,4 @@
+# Вывод хорошего дня недели
 import datetime
 from flask import Flask
 
