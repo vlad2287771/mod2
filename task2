@@ -1,3 +1,4 @@
+# Средний размер файла
 from sys import stdin
 from typing import List
 size = 0
